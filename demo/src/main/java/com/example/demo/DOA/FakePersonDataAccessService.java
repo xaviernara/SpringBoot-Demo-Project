@@ -1,10 +1,12 @@
 package com.example.demo.DOA;
 
 import com.example.demo.Model.Person;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.UUID;
 
+@Repository("fakeDAO")
 public class FakePersonDataAccessService implements PersonDOA {
 
     List<Person> DB = new ArrayList<>();

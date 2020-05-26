@@ -11,7 +11,7 @@ public interface PersonDOA {
 
     //Used to add a person even if they dont have a id
     //creates random id for the person
-    default int addPerson(Person person){
+    default int insertPerson(Person person){
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
