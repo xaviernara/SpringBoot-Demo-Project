@@ -4,6 +4,7 @@ import com.example.demo.Model.Person;
 import com.example.demo.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,7 +32,7 @@ public class PersonController {
     }
 
     @PatchMapping
-    public void addPerson(Person person){
+    public void addPerson(@RequestBody Person person){
 
         personService.addPerson(person);
     }
