@@ -17,4 +17,25 @@ public class FakePersonDataAccessService implements PersonDOA {
         DB.add(new Person(id, person.getName()));
         return 0;
     }
+
+    @Override
+    public List<Person> selectAllPeople() {
+        return DB;
+    }
+
+    @Override
+    public Optional<Person> selectPersonById(UUID id) {
+        return DB.stream().filter(person -> person.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public int deletePersonById(UUID id) {
+        return 0;
+    }
+
+    @Override
+    public int updatePerson(UUID id, Person person) {
+        return 0;
+    }
+
 }

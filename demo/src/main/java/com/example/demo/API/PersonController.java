@@ -1,12 +1,15 @@
 package com.example.demo.API;
-
 import com.example.demo.Model.Person;
 import com.example.demo.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+//creating path for POSTMAN to send post requests
+@RequestMapping("api/v1/person")
 @RestController
 public class PersonController {
 
@@ -21,9 +24,6 @@ public class PersonController {
         Delete - Delete ( It is used to **delete** a resource identified by a URI.)
      */
 
-
-
-
     private final PersonService personService;
 
     @Autowired
@@ -31,9 +31,20 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @PatchMapping
+    @PostMapping
     public void addPerson(@RequestBody Person person){
 
         personService.addPerson(person);
     }
+
+    @GetMapping
+    public List<Person> getAllPeople(){
+        return personService.getAllPeople();
+    }
+
+
+    public Person getPersonById(UUID id) {
+        return personService.selectPersonById(id).orElse(null);
+    }
+
 }

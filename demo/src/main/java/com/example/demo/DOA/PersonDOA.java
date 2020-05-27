@@ -2,6 +2,8 @@ package com.example.demo.DOA;
 
 import com.example.demo.Model.Person;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonDOA {
@@ -15,6 +17,17 @@ public interface PersonDOA {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    public List<Person> selectAllPeople();
+
+    Optional<Person> selectPersonById(UUID id);
+
+    int deletePersonById(UUID id);
+
+    int updatePerson(UUID id, Person person);
+
+
+
 
 
 
