@@ -32,6 +32,12 @@ public class PersonService {
         return personDOA.selectPersonById(id);
     }
 
+    public int deletePerson(UUID id){
+
+        return personDOA.deletePersonById(id);
+
+    }
+
 
 
 }

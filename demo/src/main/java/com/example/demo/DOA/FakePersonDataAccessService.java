@@ -30,12 +30,22 @@ public class FakePersonDataAccessService implements PersonDOA {
 
     @Override
     public int deletePersonById(UUID id) {
+        Optional<Person> personMaybe = selectPersonById(id);
+
+        if(!personMaybe.isPresent()) return 0;
+
+        DB.remove(personMaybe.get());
         return 0;
     }
 
     @Override
     public int updatePerson(UUID id, Person person) {
-        return 0;
+
+        return selectPersonById(id).
+                map(p -> {int indexOfPersonToDelete = DB.indexOf(person);
+                            if(indexOfPersonToDelete >= 0){DB.set(indexOfPersonToDelete,person);}
+                            return 1;})
+                .orElse(0);
     }
 
 }
