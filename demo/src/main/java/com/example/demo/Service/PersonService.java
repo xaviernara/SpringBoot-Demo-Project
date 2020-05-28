@@ -38,6 +38,11 @@ public class PersonService {
 
     }
 
+    public int updatePerson(UUID id,Person newPerson){
+
+        return personDOA.updatePerson(id,newPerson);
+    }
+
 
 
 }
