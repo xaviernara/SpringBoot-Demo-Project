@@ -3,9 +3,10 @@ import com.example.demo.Model.Person;
 import com.example.demo.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.lang.*;
+//import javax.validation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 //creating path for POSTMAN to send post requests
@@ -32,7 +33,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public void addPerson(@RequestBody Person person){
+    public void addPerson(@NonNull @RequestBody Person person){
 
         personService.addPerson(person);
     }
@@ -53,7 +54,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate){
+    public void updatePerson(@PathVariable("id") UUID id, @NonNull @RequestBody Person personToUpdate){
         personService.updatePerson(id,personToUpdate);
     }
 
